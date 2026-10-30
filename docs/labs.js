@@ -9,7 +9,7 @@ const LABS = [
       { name: 'Сайт застосунку', url: 'https://valentinkxd.github.io/PostProject/', note: 'Робоча версія на GitHub Pages' },
       { name: 'Репозиторій', url: 'https://github.com/ValentinKxD/PostProject', note: 'Вихідний код' },
     ],
-    link: { text: 'Відкрити PostProject', url: 'https://valentinkxd.github.io/PostProject/' },
+    link: { text: 'PostProject', url: 'https://valentinkxd.github.io/PostProject/' },
   },
   {
     number: 2,
@@ -51,9 +51,9 @@ function fileUrl(lab, file) {
 
 function renderLab(lab) {
   const items = lab.files
-    .map((f) => `<li><a href="${fileUrl(lab, f)}">${f.name || f.path}</a> — ${f.note}</li>`)
+    .map((f) => `<li><a href="${fileUrl(lab, f)}">${f.name || f.path}</a> – ${f.note}</li>`)
     .join('');
-  const link = lab.link || { text: `Уся папка ${lab.folder}`, url: `${REPO}/tree/main/${lab.folder}` };
+  const link = lab.link || { text: `До лабораторної роботи №${lab.number}`, url: `${REPO}/tree/main/${lab.folder}` };
 
   return `
     <section class="card-wrapper lab-card">

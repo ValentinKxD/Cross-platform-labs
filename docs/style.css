@@ -35,16 +35,26 @@ body, html {
 
 .header-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 6px;
+  text-align: center;
 }
 
 .app-header h1 {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Google Sans', 'Segoe UI', sans-serif;
   font-size: 2.2rem;
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+.header-subtitle {
+  margin: 0;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
 .app-main {
