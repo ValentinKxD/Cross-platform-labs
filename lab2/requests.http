@@ -1,0 +1,58 @@
+### Тестовий маршрут
+GET http://localhost:3000/
+
+### Отримати всі накладні
+GET http://localhost:3000/api/waybills
+
+### Створити нову накладну
+POST http://localhost:3000/api/waybills
+Content-Type: application/json
+
+{
+  "lastName": "Качинський",
+  "firstName": "Валентин",
+  "phone": "+380671234567",
+  "cityFrom": "Київ",
+  "cityTo": "Львів",
+  "weightKg": 2.5,
+  "distanceKm": 540,
+  "deliveryType": "standard"
+}
+
+### Отримати накладну за id (підставте реальний _id)
+GET http://localhost:3000/api/waybills/ID_НАКЛАДНОЇ
+
+### Відстежити посилку за номером накладної (підставте реальний trackingNumber)
+GET http://localhost:3000/api/waybills/track/НОМЕР_НАКЛАДНОЇ
+
+### Оновити накладну (підставте реальний _id)
+PUT http://localhost:3000/api/waybills/ID_НАКЛАДНОЇ
+Content-Type: application/json
+
+{
+  "lastName": "Качинський",
+  "firstName": "Валентин",
+  "phone": "+380671234567",
+  "cityFrom": "Київ",
+  "cityTo": "Одеса",
+  "weightKg": 3,
+  "distanceKm": 475,
+  "deliveryType": "express",
+  "status": "in_transit"
+}
+
+### Видалити накладну (підставте реальний _id)
+DELETE http://localhost:3000/api/waybills/ID_НАКЛАДНОЇ
+
+### Перевірка middleware валідації — очікується 400 Bad Request
+POST http://localhost:3000/api/waybills
+Content-Type: application/json
+
+{
+  "lastName": "",
+  "firstName": "Валентин",
+  "phone": "0671234567",
+  "cityFrom": "Київ",
+  "cityTo": "Київ",
+  "weightKg": -1
+}

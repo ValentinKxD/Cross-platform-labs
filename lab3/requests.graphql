@@ -1,0 +1,136 @@
+# Запити для Apollo Sandbox (http://localhost:4001/).
+# Для захищених операцій у вкладці Headers додайте:
+#   Authorization: Bearer <token з register або login>
+
+# 11.1. Реєстрація користувача
+mutation Register {
+  register(name: "Валентин Качинський", email: "valentyn@example.com", password: "123456") {
+    token
+    user { id name email }
+  }
+}
+
+# Повторна реєстрація з тим самим email - очікується помилка «Користувач з таким email вже існує.»
+
+# 11.2. Вхід користувача
+mutation Login {
+  login(email: "valentyn@example.com", password: "123456") {
+    token
+    user { id name email }
+  }
+}
+
+# 11.3. Поточний користувач (потрібен заголовок Authorization)
+query Me {
+  me { id name email }
+}
+
+# 11.4. Створення накладної (потрібен заголовок Authorization)
+mutation CreateWaybill {
+  createWaybill(input: {
+    lastName: "Качинський"
+    firstName: "Валентин"
+    phone: "+380671234567"
+    cityFrom: "Київ"
+    cityTo: "Львів"
+    weightKg: 2.5
+    distanceKm: 540
+    deliveryType: standard
+  }) {
+    id
+    trackingNumber
+    cityFrom
+    cityTo
+    cost
+    days
+    status
+    owner { name email }
+  }
+}
+
+# Список усіх накладних (публічний запит)
+query Waybills {
+  waybills {
+    id
+    trackingNumber
+    cityFrom
+    cityTo
+    cost
+    days
+    status
+    owner { name }
+  }
+}
+
+# Відстеження за номером накладної (публічний запит, підставте реальний номер)
+query Track {
+  trackWaybill(trackingNumber: "НОМЕР_НАКЛАДНОЇ") {
+    trackingNumber
+    status
+    cityFrom
+    cityTo
+    days
+  }
+}
+
+# Історія відправлень поточного користувача (потрібен заголовок Authorization)
+query MyWaybills {
+  myWaybills { id trackingNumber cityTo cost status }
+}
+
+# Оновлення накладної (потрібен заголовок Authorization)
+mutation UpdateWaybill {
+  updateWaybill(id: "1", input: {
+    lastName: "Качинський"
+    firstName: "Валентин"
+    phone: "+380671234567"
+    cityFrom: "Київ"
+    cityTo: "Одеса"
+    weightKg: 3
+    distanceKm: 475
+    deliveryType: express
+    status: in_transit
+  }) {
+    id
+    cityTo
+    cost
+    days
+    deliveryType
+    status
+  }
+}
+
+# Видалення накладної (потрібен заголовок Authorization)
+mutation DeleteWaybill {
+  deleteWaybill(id: "1")
+}
+
+# 11.5. Без заголовка Authorization - очікується помилка «Потрібна авторизація.»
+mutation CreateWithoutToken {
+  createWaybill(input: {
+    lastName: "Шевченко"
+    firstName: "Тарас"
+    phone: "+380501112233"
+    cityFrom: "Харків"
+    cityTo: "Одеса"
+    weightKg: 1.2
+    distanceKm: 730
+  }) {
+    id
+  }
+}
+
+# Перевірка валідації - очікується помилка BAD_USER_INPUT зі списком errors
+mutation InvalidWaybill {
+  createWaybill(input: {
+    lastName: ""
+    firstName: "Валентин"
+    phone: "0671234567"
+    cityFrom: "Київ"
+    cityTo: "Київ"
+    weightKg: -1
+    distanceKm: 0
+  }) {
+    id
+  }
+}
