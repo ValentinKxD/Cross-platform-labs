@@ -1,18 +1,15 @@
 export const typeDefs = `#graphql
-  "Користувач застосунку (колекція users)"
   type User {
     id: ID!
     name: String!
     email: String!
   }
 
-  "Тип доставки: стандартна або експрес"
   enum DeliveryType {
     standard
     express
   }
 
-  "Статус відправлення"
   enum WaybillStatus {
     created
     in_transit
@@ -20,7 +17,6 @@ export const typeDefs = `#graphql
     received
   }
 
-  "Електронна накладна (колекція waybills), owner - користувач, який її створив"
   type Waybill {
     id: ID!
     trackingNumber: String!
@@ -39,13 +35,11 @@ export const typeDefs = `#graphql
     owner: User!
   }
 
-  "Результат реєстрації та входу"
   type AuthPayload {
     token: String!
     user: User!
   }
 
-  "Дані для створення та оновлення накладної"
   input WaybillInput {
     lastName: String!
     firstName: String!

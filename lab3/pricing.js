@@ -1,5 +1,3 @@
-// Розрахунок вартості та днів доставки - та сама формула, що й у калькуляторі PostProject та ЛР №2
-
 export const DELIVERY_TYPES = ['standard', 'express'];
 
 const BASE_PRICE = 50;

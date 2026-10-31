@@ -1,6 +1,3 @@
-// Послідовна перевірка GraphQL API (пункти 11.1-11.5) без браузера: npm run api:all
-// Сервер має бути запущений (npm run dev).
-
 const URL = `http://localhost:${process.env.PORT || 4001}/`;
 
 async function gql(title, query, variables = {}, token) {

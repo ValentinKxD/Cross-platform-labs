@@ -1,6 +1,3 @@
-// Перевірка даних накладної - перенесено з middleware validateWaybill.js ЛР №2.
-// Типи полів перевіряє сама GraphQL-схема, тут лишаються правила предметної області.
-
 const REQUIRED_TEXT_FIELDS = {
   lastName: 'прізвище',
   firstName: 'ім\'я',

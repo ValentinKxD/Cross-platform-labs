@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { users } from './data.js';
 
-// У навчальному проєкті секрет зберігається в коді, у реальному - лише у змінних середовища
 export const JWT_SECRET = 'postproject-lab3-secret';
 
 export function createToken(user) {

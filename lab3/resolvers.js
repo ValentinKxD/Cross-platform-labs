@@ -20,7 +20,6 @@ function badInput(message, errors) {
   });
 }
 
-// Перевіряє, що накладна існує і належить поточному користувачу
 function findOwnWaybill(id, user) {
   const waybill = waybills.find((item) => item.id === id);
   if (!waybill) return null;
@@ -154,7 +153,6 @@ export const resolvers = {
     },
   },
 
-  // Зв'язок накладної з користувачем: у сховищі лежить лише ownerId
   Waybill: {
     owner: (waybill) => users.find((user) => user.id === waybill.ownerId),
   },

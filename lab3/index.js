@@ -9,13 +9,11 @@ const PORT = Number(process.env.PORT) || 4001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  // У відповідях з помилками - лише повідомлення і код, без stacktrace
   includeStacktraceInErrorResponses: false,
 });
 
 const { url } = await startStandaloneServer(server, {
   listen: { port: PORT },
-  // Для кожного запиту визначаємо користувача за заголовком Authorization
   context: async ({ req }) => {
     const user = getUserFromAuthHeader(req.headers.authorization);
     return { user };
