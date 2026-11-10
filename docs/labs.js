@@ -43,6 +43,21 @@ const LABS = [
       { path: 'requests.graphql', note: 'Приклади запитів' },
     ],
   },
+  {
+    number: 4,
+    topic: 'Вебверсія PostProject як SPA: стилі переписано на Tailwind CSS, калькулятор з історією розрахунків у localStorage.',
+    stack: 'React Hooks, TypeScript, Vite, Tailwind CSS',
+    folder: 'lab4',
+    files: [
+      { path: 'src/App.tsx', note: 'Навігація SPA без перезавантаження сторінки' },
+      { path: 'src/components/calculator.tsx', note: 'Калькулятор: стан, обробники, localStorage' },
+      { path: 'src/components/calculationHistory.tsx', note: 'Історія розрахунків і лічильники' },
+      { path: 'src/components/calculationItem.tsx', note: 'Запис історії: «Оформлено», «Видалити»' },
+      { path: 'src/calculations.ts', note: 'Читання й запис історії в localStorage' },
+      { path: 'src/css/index.css', note: 'Тема Tailwind CSS (світла і темна)' },
+      { path: 'src/ui.ts', note: 'Спільні набори класів Tailwind' },
+    ],
+  },
 ];
 
 function fileUrl(lab, file) {
