@@ -58,6 +58,21 @@ const LABS = [
       { path: 'src/ui.ts', note: 'Спільні набори класів Tailwind' },
     ],
   },
+  {
+    number: 5,
+    topic: 'Мобільна версія PostProject для Android та iOS: калькулятор з історією розрахунків, трекінг, накладні й особистий кабінет.',
+    stack: 'React Native, Expo, TypeScript, Apollo Client, AsyncStorage',
+    folder: 'PostProjectMobile',
+    files: [
+      { path: 'App.tsx', note: 'Головний компонент: стан екрана, SafeAreaView, навігація' },
+      { path: 'src/components/Calculator.tsx', note: 'Стан історії: додавання, «Оформлено», видалення, Alert' },
+      { path: 'src/components/CalculatorHeader.tsx', note: 'Заголовок і лічильники (аналог Header)' },
+      { path: 'src/components/CalculationForm.tsx', note: 'Форма розрахунку (аналог NoteForm)' },
+      { path: 'src/components/CalculationList.tsx', note: 'Список FlatList (аналог NoteList)' },
+      { path: 'src/components/CalculationItem.tsx', note: 'Запис історії (аналог NoteItem)' },
+      { path: 'src/theme.tsx', note: 'Світла й темна палітри, StyleSheet' },
+    ],
+  },
 ];
 
 function fileUrl(lab, file) {
