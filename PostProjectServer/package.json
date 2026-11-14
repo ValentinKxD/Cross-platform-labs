@@ -1,0 +1,29 @@
+{
+  "name": "postproject-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL API серверної частини застосунку поштової логістики PostProject з JWT-автентифікацією та MongoDB (ЛР №2-3, КПП)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "seed": "node scripts/seed.js"
+  },
+  "keywords": [
+    "postproject",
+    "graphql",
+    "apollo-server",
+    "jwt",
+    "mongoose"
+  ],
+  "author": "Валентин Качинський, ВЕБ-21",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^5.5.1",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^17.4.2",
+    "graphql": "^16.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.24.7"
+  }
+}
