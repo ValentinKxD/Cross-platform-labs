@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { CombinedGraphQLErrors } from '@apollo/client';
 import { useLazyQuery } from '@apollo/client/react';
 import { CALCULATE_DELIVERY, type DeliveryType } from '../graphql';
 import { daysLabel, errorMessages } from '../format';
 import { loadCalculations, saveCalculations, type Calculation } from '../calculations';
 import { notify } from '../notify';
+import { calculateDeliveryLocally, validateDelivery, type DeliveryEstimate } from '../pricing';
 import { useStyles, type Palette } from '../theme';
 import CalculatorHeader from './CalculatorHeader';
 import CalculationForm from './CalculationForm';
 import CalculationList from './CalculationList';
 import { ResultBox } from './ui';
+
+const SERVER_TIMEOUT_MS = 3000;
 
 function parseNumber(value: string) {
   return parseFloat(value.trim().replace(',', '.'));
@@ -20,7 +24,8 @@ export default function Calculator() {
   const [calculations, setCalculations] = useState<Calculation[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [result, setResult] = useState<Calculation | null>(null);
-  const [calculate, { loading }] = useLazyQuery(CALCULATE_DELIVERY, { fetchPolicy: 'network-only' });
+  const [busy, setBusy] = useState(false);
+  const [calculate] = useLazyQuery(CALCULATE_DELIVERY, { fetchPolicy: 'network-only' });
 
   useEffect(() => {
     loadCalculations().then((saved) => {
@@ -41,33 +46,54 @@ export default function Calculator() {
       notify('Помилка', 'Вкажіть вагу посилки та відстань доставки.');
       return false;
     }
-    if (isNaN(weightKg) || isNaN(distanceKm) || weightKg <= 0 || distanceKm <= 0) {
-      notify('Помилка', 'Вага та відстань мають бути додатними числами.');
+    const invalid = validateDelivery(weightKg, distanceKm);
+    if (invalid.length > 0) {
+      notify('Помилка', invalid.join('\n'));
       return false;
     }
 
+    setBusy(true);
     try {
-      const { data } = await calculate({ variables: { weightKg, distanceKm, deliveryType } });
-      if (!data) return false;
+      const fromServer = await estimateOnServer(weightKg, distanceKm, deliveryType);
+      const estimate = fromServer ?? calculateDeliveryLocally(weightKg, distanceKm, deliveryType);
 
       const newCalculation: Calculation = {
         id: Date.now().toString(),
         weightKg,
         distanceKm,
         deliveryType,
-        cost: data.calculateDelivery.cost,
-        days: data.calculateDelivery.days,
+        cost: estimate.cost,
+        days: estimate.days,
         createdAt: new Date().toISOString(),
         issued: false,
       };
       setCalculations((current) => [newCalculation, ...current]);
       setResult(newCalculation);
-      notify('Готово', `Розрахунок додано до історії: ${newCalculation.cost} ₴, ${daysLabel(newCalculation.days)}.`);
+      const offline = fromServer ? '' : '\n\nСервер недоступний, розраховано на пристрої за тарифами PostProject.';
+      notify('Готово', `Розрахунок додано до історії: ${newCalculation.cost} ₴, ${daysLabel(newCalculation.days)}.${offline}`);
       return true;
     } catch (err) {
       setResult(null);
       notify('Помилка', errorMessages(err).join('\n'));
       return false;
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const estimateOnServer = async (weightKg: number, distanceKm: number, deliveryType: DeliveryType): Promise<DeliveryEstimate | null> => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<null>((resolve) => {
+      timer = setTimeout(() => resolve(null), SERVER_TIMEOUT_MS);
+    });
+    try {
+      const response = await Promise.race([calculate({ variables: { weightKg, distanceKm, deliveryType } }), timeout]);
+      return response?.data?.calculateDelivery ?? null;
+    } catch (err) {
+      if (CombinedGraphQLErrors.is(err)) throw err;
+      return null;
+    } finally {
+      clearTimeout(timer);
     }
   };
 
@@ -86,7 +112,7 @@ export default function Calculator() {
   const header = (
     <View>
       <CalculatorHeader total={calculations.length} issued={issued} />
-      <CalculationForm onAdd={addCalculation} loading={loading} />
+      <CalculationForm onAdd={addCalculation} loading={busy} />
 
       {result && (
         <ResultBox style={styles.result}>
