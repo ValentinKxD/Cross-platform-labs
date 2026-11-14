@@ -77,23 +77,6 @@ const LABS = [
       { path: 'app.json', note: 'Налаштування Expo: назва, пакет Android, дозвіл HTTP-запитів' },
     ],
   },
-  {
-    number: 6,
-    topic: 'Десктопна версія PostProject для Windows, macOS і Linux на Electron: головний процес, preload-скрипт і IPC, історія розрахунків зберігається у файлі calculations.json, збірка інсталятора та портативного .exe.',
-    stack: 'Electron, React, TypeScript, Vite, Tailwind CSS, Apollo Client, electron-builder',
-    folder: 'PostProjectDesktop',
-    files: [
-      { path: 'main.js', note: 'Головний процес: вікно, життєвий цикл, IPC calculations:load / calculations:save, файл у теці userData' },
-      { path: 'preload.js', note: 'contextBridge: window.calculationsAPI лише з loadCalculations і saveCalculations' },
-      { path: 'index.html', note: 'Сторінка рендер-процесу з Content-Security-Policy' },
-      { path: 'src/calculations.ts', note: 'Читання й запис історії через window.calculationsAPI замість localStorage' },
-      { path: 'src/components/calculator.tsx', note: 'Калькулятор: завантаження під час запуску, збереження після кожної зміни' },
-      { path: 'src/electron.d.ts', note: 'Тип window.calculationsAPI для TypeScript' },
-      { path: 'vite.config.ts', note: 'Збірка рендер-процесу в теку renderer/ з відносними шляхами' },
-      { path: 'package.json', note: 'main: main.js, скрипти start (electron .) і dist (electron-builder)' },
-      { path: 'start.bat', note: 'Запуск сервера GraphQL і десктопного застосунку' },
-    ],
-  },
 ];
 
 function fileUrl(lab, file) {
