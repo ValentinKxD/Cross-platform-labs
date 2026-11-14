@@ -1,6 +1,13 @@
-# У репозиторій потрапляють лише лаби та сторінка GitHub Pages
+# У репозиторій потрапляють лаби, проєкти PostProject та сторінка GitHub Pages
 /*
 !/.gitignore
 !/docs/
 !/lab*/
-/lab_4edit/
+!/PostProjectWeb/
+!/PostProjectServer/
+!/PostProjectMobile/
+
+
+# Збірка та налаштування IDE вебверсії
+/PostProjectWeb/dist/
+/PostProjectWeb/.idea/
