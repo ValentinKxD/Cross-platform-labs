@@ -91,7 +91,6 @@ const LABS = [
       { path: 'src/electron.d.ts', note: 'Тип window.calculationsAPI для TypeScript' },
       { path: 'vite.config.ts', note: 'Збірка рендер-процесу в теку renderer/ з відносними шляхами' },
       { path: 'package.json', note: 'main: main.js, скрипти start (electron .) і dist (electron-builder)' },
-      { path: 'start.bat', note: 'Запуск десктопного застосунку командою npm start' },
     ],
   },
 ];
