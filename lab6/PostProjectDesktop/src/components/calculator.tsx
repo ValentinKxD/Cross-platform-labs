@@ -27,10 +27,11 @@ export default function Calculator() {
     };
   }, []);
 
-  const updateCalculations = async (next: Calculation[], successText: string) => {
+  const updateCalculations = async (next: Calculation[], successText?: string) => {
     setCalculations(next);
     const saved = await saveCalculations(next);
-    setMessage(saved ? { text: successText, type: 'success' } : { text: 'Не вдалося зберегти історію у файл.', type: 'error' });
+    if (!saved) setMessage({ text: 'Не вдалося зберегти історію у файл.', type: 'error' });
+    else if (successText) setMessage({ text: successText, type: 'success' });
   };
 
   const handleCalculate = async (e: React.FormEvent) => {
@@ -71,8 +72,7 @@ export default function Calculator() {
 
   const toggleCalculation = async (id: number) => {
     const next = calculations.map((item) => (item.id === id ? { ...item, issued: !item.issued } : item));
-    const issued = next.find((item) => item.id === id)?.issued;
-    await updateCalculations(next, issued ? 'Розрахунок позначено як оформлений.' : 'Позначку «Оформлено» знято.');
+    await updateCalculations(next);
   };
 
   const deleteCalculation = async (id: number) => {
