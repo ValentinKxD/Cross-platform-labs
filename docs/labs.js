@@ -93,6 +93,28 @@ const LABS = [
       { path: 'package.json', note: 'main: main.js, скрипти start (electron .) і dist (electron-builder)' },
     ],
   },
+  {
+    number: '7-8',
+    topic: 'Монорепозиторій PostProject на npm workspaces: спільне ядро @postproject/core з тарифами, правилами перевірки, форматуванням і сервісом розрахунків, яке використовують сервер, вебверсія, десктоп на Electron і мобільний застосунок на Expo через власні адаптери збереження; зміна правила в ядрі одразу діє в усіх клієнтах.',
+    stack: 'npm workspaces, модулі ES, node --test, React, Electron, React Native (Expo), Apollo Server',
+    folder: 'lab7-8/PostProject-monorepo',
+    files: [
+      { path: 'package.json', note: 'Корінь: private, workspaces packages/*, скрипти test і start для кожного пакета' },
+      { path: 'packages/core/index.js', note: 'Публічне API спільного ядра @postproject/core' },
+      { path: 'packages/core/calculationValidation.js', note: 'Правила перевірки ваги, відстані й типу доставки' },
+      { path: 'packages/core/calculationsService.js', note: 'CalculationsService: адаптер передається через конструктор' },
+      { path: 'packages/core/storageAdapter.js', note: 'Інтерфейс адаптера та MemoryStorageAdapter для тестів' },
+      { path: 'packages/core/waybills.js', note: 'Статуси, фільтри та перевірка електронної накладної' },
+      { path: 'packages/core/test/calculationsService.test.js', note: 'Тести ядра (node --test)' },
+      { path: 'packages/web/src/storage/localStorageAdapter.ts', note: 'Вебверсія: адаптер localStorage' },
+      { path: 'packages/desktop/fileStorageAdapter.js', note: 'Десктоп: збереження у файл calculations.json' },
+      { path: 'packages/desktop/ipcHandlers.js', note: 'Обробники IPC над спільним сервісом' },
+      { path: 'packages/desktop/main.js', note: 'Головний процес Electron як модуль ES' },
+      { path: 'packages/desktop/preload.cjs', note: 'contextBridge: window.calculationsAPI' },
+      { path: 'packages/mobile/src/storage/asyncStorageAdapter.ts', note: 'Мобільна версія: адаптер AsyncStorage' },
+      { path: 'packages/server/resolvers.js', note: 'Сервер GraphQL з правилами зі спільного ядра' },
+    ],
+  },
 ];
 
 function fileUrl(lab, file) {
