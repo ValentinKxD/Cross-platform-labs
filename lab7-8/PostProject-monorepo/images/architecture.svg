@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 900" width="1220" height="900" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .band-label { font-size: 15px; font-weight: 700; fill: #0f172a; }
+      .band-sub { font-size: 12px; fill: #475569; }
+      .title { font-size: 15px; font-weight: 700; fill: #0f172a; }
+      .text { font-size: 12.5px; fill: #1e293b; }
+      .mono { font-size: 12px; fill: #334155; font-family: Consolas, 'Courier New', monospace; }
+      .edge { font-size: 11.5px; fill: #334155; }
+      .line { stroke: #475569; stroke-width: 1.6; fill: none; }
+      .dash { stroke: #475569; stroke-width: 1.6; fill: none; stroke-dasharray: 6 4; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1220" height="900" fill="#ffffff"/>
+  <text x="610" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">PostProject — архітектура технологічного стеку</text>
+
+  <!-- Level bands -->
+  <rect x="10" y="60" width="1200" height="110" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <rect x="10" y="180" width="1200" height="130" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <rect x="10" y="320" width="1200" height="250" rx="10" fill="#fefce8" stroke="#fde68a"/>
+  <rect x="10" y="580" width="1200" height="150" rx="10" fill="#fdf2f8" stroke="#fbcfe8"/>
+  <rect x="10" y="740" width="1200" height="110" rx="10" fill="#f5f3ff" stroke="#ddd6fe"/>
+
+  <text x="25" y="105" class="band-label">Рівень 1</text>
+  <text x="25" y="125" class="band-sub">Платформи</text>
+  <text x="25" y="235" class="band-label">Рівень 2</text>
+  <text x="25" y="255" class="band-sub">Клієнтські</text>
+  <text x="25" y="271" class="band-sub">технології</text>
+  <text x="25" y="425" class="band-label">Рівень 3</text>
+  <text x="25" y="445" class="band-sub">Спільний код:</text>
+  <text x="25" y="461" class="band-sub">адаптери + ядро</text>
+  <text x="25" y="645" class="band-label">Рівень 4</text>
+  <text x="25" y="665" class="band-sub">Сервер і API</text>
+  <text x="25" y="785" class="band-label">Рівень 5</text>
+  <text x="25" y="805" class="band-sub">База даних</text>
+
+  <!-- Level 1: platforms -->
+  <g>
+    <rect x="160" y="78" width="300" height="74" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="310" y="105" text-anchor="middle" class="title">Веббраузер</text>
+    <text x="310" y="127" text-anchor="middle" class="text">Chrome, Edge, Firefox, Safari</text>
+    <text x="310" y="143" text-anchor="middle" class="text">(SPA за адресою localhost:3000)</text>
+
+    <rect x="490" y="78" width="300" height="74" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="640" y="105" text-anchor="middle" class="title">Мобільна ОС</text>
+    <text x="640" y="127" text-anchor="middle" class="text">Android (APK) та iOS</text>
+    <text x="640" y="143" text-anchor="middle" class="text">(Expo Go / нативна збірка)</text>
+
+    <rect x="820" y="78" width="300" height="74" rx="8" fill="#fff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="970" y="105" text-anchor="middle" class="title">Десктопна ОС</text>
+    <text x="970" y="127" text-anchor="middle" class="text">Windows (NSIS + portable .exe),</text>
+    <text x="970" y="143" text-anchor="middle" class="text">macOS, Linux</text>
+  </g>
+
+  <!-- Level 2: clients -->
+  <g>
+    <rect x="160" y="196" width="300" height="98" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="310" y="220" text-anchor="middle" class="title">packages/web</text>
+    <text x="310" y="241" text-anchor="middle" class="text">React 19 + TypeScript + Vite</text>
+    <text x="310" y="259" text-anchor="middle" class="text">Tailwind CSS 4, React Hooks</text>
+    <text x="310" y="277" text-anchor="middle" class="text">Apollo Client 4 (GraphQL)</text>
+
+    <rect x="490" y="196" width="300" height="98" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="640" y="220" text-anchor="middle" class="title">packages/mobile</text>
+    <text x="640" y="241" text-anchor="middle" class="text">React Native 0.88 + Expo SDK 58</text>
+    <text x="640" y="259" text-anchor="middle" class="text">TypeScript, StyleSheet, FlatList</text>
+    <text x="640" y="277" text-anchor="middle" class="text">Apollo Client 4 (GraphQL)</text>
+
+    <rect x="820" y="196" width="300" height="98" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="970" y="220" text-anchor="middle" class="title">packages/desktop</text>
+    <text x="970" y="241" text-anchor="middle" class="text">Electron 45: main.js + preload.cjs</text>
+    <text x="970" y="259" text-anchor="middle" class="text">React-рендерер (Vite), IPC</text>
+    <text x="970" y="277" text-anchor="middle" class="text">electron-builder</text>
+  </g>
+
+  <!-- L1 -> L2 -->
+  <path d="M310,152 L310,194" class="line" marker-end="url(#arrow)"/>
+  <path d="M640,152 L640,194" class="line" marker-end="url(#arrow)"/>
+  <path d="M970,152 L970,194" class="line" marker-end="url(#arrow)"/>
+
+  <!-- Level 3: adapters -->
+  <g>
+    <rect x="160" y="340" width="300" height="78" rx="8" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="310" y="364" text-anchor="middle" class="title">LocalStorageAdapter</text>
+    <text x="310" y="386" text-anchor="middle" class="text">window.localStorage</text>
+    <text x="310" y="404" text-anchor="middle" class="mono">web/src/storage/</text>
+
+    <rect x="490" y="340" width="300" height="78" rx="8" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="640" y="364" text-anchor="middle" class="title">AsyncStorageAdapter</text>
+    <text x="640" y="386" text-anchor="middle" class="text">@react-native-async-storage</text>
+    <text x="640" y="404" text-anchor="middle" class="mono">mobile/src/storage/</text>
+
+    <rect x="820" y="340" width="300" height="78" rx="8" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="970" y="364" text-anchor="middle" class="title">FileStorageAdapter + ipcHandlers</text>
+    <text x="970" y="386" text-anchor="middle" class="text">calculations.json у теці userData</text>
+    <text x="970" y="404" text-anchor="middle" class="mono">calculations:list/add/toggle/remove</text>
+  </g>
+
+  <!-- L2 -> adapters -->
+  <path d="M310,294 L310,338" class="line" marker-end="url(#arrow)"/>
+  <path d="M640,294 L640,338" class="line" marker-end="url(#arrow)"/>
+  <path d="M970,294 L970,338" class="line" marker-end="url(#arrow)"/>
+  <text x="980" y="322" class="edge">IPC (contextBridge)</text>
+
+  <!-- Core -->
+  <rect x="160" y="450" width="960" height="104" rx="10" fill="#fff" stroke="#a16207" stroke-width="2.2"/>
+  <text x="640" y="474" text-anchor="middle" class="title">packages/core — @postproject/core (ES-модулі, npm workspaces, node --test, index.d.ts)</text>
+  <text x="640" y="497" text-anchor="middle" class="text">CalculationsService (DI адаптера) · CalculationStorageAdapter / MemoryStorageAdapter · pricing (TARIFFS, calculateDelivery)</text>
+  <text x="640" y="517" text-anchor="middle" class="text">calculationValidation · contactValidation · waybills (статуси, трекінг-номери) · format · calculations</text>
+  <text x="640" y="537" text-anchor="middle" class="text">graphqlQueries (спільні запити) · createServerEstimator (fetch + тайм-аут 3 с → офлайн-розрахунок на пристрої)</text>
+
+  <!-- adapters -> core (extends) -->
+  <path d="M310,418 L310,448" class="dash" marker-end="url(#arrow)"/>
+  <path d="M640,418 L640,448" class="dash" marker-end="url(#arrow)"/>
+  <path d="M970,418 L970,448" class="dash" marker-end="url(#arrow)"/>
+  <text x="318" y="438" class="edge">extends CalculationStorageAdapter</text>
+
+  <!-- Level 4: server -->
+  <rect x="160" y="598" width="620" height="114" rx="8" fill="#fff" stroke="#db2777" stroke-width="1.5"/>
+  <text x="470" y="622" text-anchor="middle" class="title">packages/server — GraphQL API</text>
+  <text x="470" y="645" text-anchor="middle" class="text">Node.js + Apollo Server 5 (startStandaloneServer, порт 4001)</text>
+  <text x="470" y="665" text-anchor="middle" class="text">schema.js (Query / Mutation) · resolvers.js · JWT (jsonwebtoken) + bcryptjs</text>
+  <text x="470" y="685" text-anchor="middle" class="text">calculateDelivery · login/register · createWaybill · trackWaybill</text>
+  <text x="470" y="703" text-anchor="middle" class="band-sub">Попередня версія: REST API на Express (ЛР №2)</text>
+
+  <rect x="820" y="598" width="300" height="114" rx="8" fill="#fff" stroke="#db2777" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="970" y="622" text-anchor="middle" class="title">Транспорт</text>
+  <text x="970" y="646" text-anchor="middle" class="text">HTTP POST, JSON</text>
+  <text x="970" y="666" text-anchor="middle" class="text">GraphQL-запити з @postproject/core</text>
+  <text x="970" y="686" text-anchor="middle" class="text">Authorization: Bearer &lt;JWT&gt;</text>
+
+  <!-- core -> server (GraphQL) -->
+  <path d="M640,554 L640,596" class="line" marker-end="url(#arrow)"/>
+  <text x="648" y="580" class="edge">GraphQL (Apollo Client / fetch)</text>
+  <!-- server imports core -->
+  <path d="M300,596 L300,556" class="dash" marker-end="url(#arrow)"/>
+  <text x="308" y="580" class="edge">import @postproject/core</text>
+  <path d="M780,655 L818,655" class="dash"/>
+
+  <!-- Level 5: DB -->
+  <rect x="160" y="758" width="620" height="76" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="470" y="782" text-anchor="middle" class="title">MongoDB Atlas + Mongoose 8</text>
+  <text x="470" y="804" text-anchor="middle" class="text">Моделі: User · Waybill · TrackingEvent · Branch · Tariff · Distance</text>
+  <text x="470" y="823" text-anchor="middle" class="band-sub">services/db.js, scripts/seed.js (початкові дані)</text>
+
+  <rect x="820" y="758" width="300" height="76" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="970" y="782" text-anchor="middle" class="title">Локальні сховища клієнтів</text>
+  <text x="970" y="804" text-anchor="middle" class="text">localStorage · AsyncStorage · JSON-файл</text>
+  <text x="970" y="823" text-anchor="middle" class="band-sub">історія розрахунків (працює офлайн)</text>
+
+  <path d="M470,712 L470,756" class="line" marker-end="url(#arrow)"/>
+  <text x="478" y="738" class="edge">Mongoose ODM</text>
+
+  <!-- legend -->
+  <line x1="160" y1="875" x2="200" y2="875" class="line" marker-end="url(#arrow)"/>
+  <text x="208" y="879" class="edge">виклик / дані</text>
+  <line x1="330" y1="875" x2="370" y2="875" class="dash" marker-end="url(#arrow)"/>
+  <text x="378" y="879" class="edge">залежність від ядра (import / extends)</text>
+</svg>

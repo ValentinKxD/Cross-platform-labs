@@ -1,0 +1,20 @@
+{
+  "name": "postproject-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PostProject — монорепозиторій зі спільним ядром @postproject/core, сервером GraphQL і клієнтами: веб, десктоп (Electron) та мобільний (Expo)",
+  "author": "Valentyn Kachynskyi",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "start:server": "npm start -w postproject-server",
+    "seed": "npm run seed -w postproject-server",
+    "start:web": "npm start -w postproject-web",
+    "start:desktop": "npm start -w postproject-monorepo-desktop",
+    "start:mobile": "npm start -w postproject-mobile"
+  }
+}

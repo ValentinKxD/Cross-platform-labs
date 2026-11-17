@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --header-bg: #BCCCDC;
+  --nav-bg: #cfdbe7;
+  --main-bg: #D9EAFD;
+  --footer-bg: #F8FAFC;
+  --card-bg: rgba(255, 255, 255, 0.35);
+  --surface: #fff;
+  --surface-soft: #f3f8fe;
+  --text-color: black;
+  --heading-color: #1a3a4a;
+  --muted-color: #4b5563;
+  --border-color: #9db5cd;
+  --accent: #1f62d1;
+  --accent-soft: rgba(31, 98, 209, 0.15);
+  --error: #c62828;
+  --success: #1b7a3a;
+  --table-head-bg: #292f3a;
+  --table-head-text: #ffffff;
+  --table-border: #d1d5db;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --done-bg: #e2e8f0;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --header-bg: #1e293b;
+  --nav-bg: #243247;
+  --main-bg: #0f172a;
+  --footer-bg: #111827;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --surface: #1e293b;
+  --surface-soft: #172234;
+  --text-color: #e5e7eb;
+  --heading-color: #dbeafe;
+  --muted-color: #9ca3af;
+  --border-color: #475569;
+  --accent: #60a5fa;
+  --accent-soft: rgba(96, 165, 250, 0.2);
+  --error: #f87171;
+  --success: #4ade80;
+  --table-head-bg: #334155;
+  --table-head-text: #f1f5f9;
+  --table-border: #374151;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --done-bg: #273244;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-title: 'Courier New', Courier, monospace;
+  --color-header: var(--header-bg);
+  --color-nav: var(--nav-bg);
+  --color-page: var(--main-bg);
+  --color-footer: var(--footer-bg);
+  --color-card: var(--card-bg);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-ink: var(--text-color);
+  --color-heading: var(--heading-color);
+  --color-muted: var(--muted-color);
+  --color-line: var(--border-color);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--error);
+  --color-success: var(--success);
+  --color-thead: var(--table-head-bg);
+  --color-thead-ink: var(--table-head-text);
+  --color-grid: var(--table-border);
+  --color-done: var(--done-bg);
+  --shadow-card: var(--shadow);
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--main-bg);
+    color: var(--text-color);
+    line-height: normal;
+    overflow-x: hidden;
+  }
+
+  button:focus-visible,
+  input[type="checkbox"]:focus-visible,
+  input[type="radio"]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}

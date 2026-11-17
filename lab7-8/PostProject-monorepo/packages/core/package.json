@@ -1,0 +1,19 @@
+{
+  "name": "@postproject/core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Спільне ядро PostProject: тарифи, правила перевірки, форматування, накладні та сервіс розрахунків доставки",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "ISC"
+}

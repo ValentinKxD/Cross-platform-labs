@@ -1,0 +1,24 @@
+{
+  "name": "postproject-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GraphQL API PostProject (Apollo Server, MongoDB, JWT) на спільному ядрі @postproject/core",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "seed": "node scripts/seed.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.5.1",
+    "@postproject/core": "*",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^17.4.2",
+    "graphql": "^16.15.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.24.7"
+  },
+  "license": "ISC"
+}

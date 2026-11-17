@@ -1,0 +1,33 @@
+{
+  "name": "postproject-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Веб-клієнт PostProject (React + Vite) на спільному ядрі @postproject/core",
+  "type": "module",
+  "scripts": {
+    "start": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview --port 3000",
+    "typecheck": "tsc -b",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@apollo/client": "^4.3.8",
+    "@postproject/core": "*",
+    "graphql": "^16.15.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^24.19.2",
+    "@types/react": "~19.3.0",
+    "@types/react-dom": "~19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.8"
+  },
+  "license": "ISC"
+}
