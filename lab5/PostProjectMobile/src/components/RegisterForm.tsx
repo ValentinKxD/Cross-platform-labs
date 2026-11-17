@@ -19,10 +19,6 @@ export default function RegisterForm({ onShowLogin }: { onShowLogin: () => void 
   const [register, { loading }] = useMutation(REGISTER);
 
   const handleSubmit = async () => {
-    if (!name.trim() || !email.trim() || !password) {
-      setErrors(["Заповніть ім'я, email і пароль"]);
-      return;
-    }
     if (password !== passwordRepeat) {
       setErrors(['Паролі не збігаються']);
       return;
@@ -30,7 +26,7 @@ export default function RegisterForm({ onShowLogin }: { onShowLogin: () => void 
 
     setErrors([]);
     try {
-      const { data } = await register({ variables: { name, email: email.trim(), phone: phone.trim() || null, password } });
+      const { data } = await register({ variables: { name, email, phone: phone.trim() || null, password } });
       if (data) signIn(data.register.token, data.register.user, false);
     } catch (err) {
       setErrors(errorMessages(err));

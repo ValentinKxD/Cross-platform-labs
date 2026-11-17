@@ -6,7 +6,7 @@ import { CALCULATE_DELIVERY, type DeliveryType } from '../graphql';
 import { daysLabel, errorMessages } from '../format';
 import { loadCalculations, saveCalculations, type Calculation } from '../calculations';
 import { notify } from '../notify';
-import { calculateDeliveryLocally, validateDelivery, type DeliveryEstimate } from '../pricing';
+import { calculateDeliveryLocally, type DeliveryEstimate } from '../pricing';
 import { useStyles, type Palette } from '../theme';
 import CalculatorHeader from './CalculatorHeader';
 import CalculationForm from './CalculationForm';
@@ -14,10 +14,6 @@ import CalculationList from './CalculationList';
 import { ResultBox } from './ui';
 
 const SERVER_TIMEOUT_MS = 3000;
-
-function parseNumber(value: string) {
-  return parseFloat(value.trim().replace(',', '.'));
-}
 
 export default function Calculator() {
   const styles = useStyles(createStyles);
@@ -39,16 +35,11 @@ export default function Calculator() {
   }, [calculations, loaded]);
 
   const addCalculation = async (weight: string, distance: string, deliveryType: DeliveryType) => {
-    const weightKg = parseNumber(weight);
-    const distanceKm = parseNumber(distance);
+    const weightKg = parseFloat(weight.replace(',', '.'));
+    const distanceKm = parseFloat(distance.replace(',', '.'));
 
-    if (!weight.trim() || !distance.trim()) {
+    if (isNaN(weightKg) || isNaN(distanceKm)) {
       notify('Помилка', 'Вкажіть вагу посилки та відстань доставки.');
-      return false;
-    }
-    const invalid = validateDelivery(weightKg, distanceKm);
-    if (invalid.length > 0) {
-      notify('Помилка', invalid.join('\n'));
       return false;
     }
 
@@ -67,7 +58,7 @@ export default function Calculator() {
         createdAt: new Date().toISOString(),
         issued: false,
       };
-      setCalculations((current) => [newCalculation, ...current]);
+      setCalculations((current) => [...current, newCalculation]);
       setResult(newCalculation);
       const offline = fromServer ? '' : '\n\nСервер недоступний, розраховано на пристрої за тарифами PostProject.';
       notify('Готово', `Розрахунок додано до історії: ${newCalculation.cost} ₴, ${daysLabel(newCalculation.days)}.${offline}`);

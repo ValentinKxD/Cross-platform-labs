@@ -17,7 +17,7 @@ export default function CalculationList({ calculations, onToggle, onDelete, head
   return (
     <View style={styles.container}>
       <FlatList
-        data={calculations}
+        data={[...calculations].reverse()}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <CalculationItem calculation={item} onToggle={onToggle} onDelete={onDelete} />}
         ListHeaderComponent={

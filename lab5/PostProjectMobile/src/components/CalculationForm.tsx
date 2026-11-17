@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import type { DeliveryType } from '../graphql';
 import { useStyles, useTheme, type Palette } from '../theme';
 import { Segmented } from './ui';
@@ -62,7 +62,7 @@ export default function CalculationForm({ onAdd, loading }: CalculationFormProps
       <Segmented options={DELIVERY_OPTIONS} value={deliveryType} onChange={setDeliveryType} />
 
       <TouchableOpacity style={[styles.addButton, loading && styles.addButtonDisabled]} onPress={handleAdd} disabled={loading} activeOpacity={0.7}>
-        {loading ? <ActivityIndicator color="#ffffff" /> : <Text style={styles.addButtonText}>Розрахувати</Text>}
+        <Text style={styles.addButtonText}>Розрахувати</Text>
       </TouchableOpacity>
     </View>
   );

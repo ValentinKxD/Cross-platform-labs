@@ -21,14 +21,10 @@ export default function LoginModal({ visible, onClose }: { visible: boolean; onC
   const [loginMutation, { loading }] = useMutation(LOGIN);
 
   const handleSubmit = async () => {
-    if (!login.trim() || !password) {
-      setError('Вкажіть email або телефон і пароль');
-      return;
-    }
     setError(null);
 
     try {
-      const { data } = await loginMutation({ variables: { login: login.trim(), password, remember } });
+      const { data } = await loginMutation({ variables: { login, password, remember } });
       if (data) signIn(data.login.token, data.login.user, remember);
     } catch (err) {
       setError(errorMessages(err)[0]);
