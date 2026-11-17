@@ -95,8 +95,8 @@ const LABS = [
   },
   {
     number: '7-8',
-    topic: 'Монорепозиторій PostProject на npm workspaces: спільне ядро @postproject/core з тарифами, правилами перевірки, форматуванням і сервісом розрахунків, яке використовують сервер, вебверсія, десктоп на Electron і мобільний застосунок на Expo через власні адаптери збереження; зміна правила в ядрі одразу діє в усіх клієнтах.',
-    stack: 'npm workspaces, модулі ES, node --test, React, Electron, React Native (Expo), Apollo Server',
+    topic: 'Монорепозиторій PostProject на npm workspaces: спільне ядро @postproject/core з тарифами, правилами перевірки, форматуванням і сервісом розрахунків, яке використовують сервер, вебверсія та десктоп на Electron через власні адаптери збереження; зміна правила в ядрі одразу діє в обох клієнтах.',
+    stack: 'npm workspaces, модулі ES, node --test, React, Electron, Apollo Server',
     folder: 'lab7-8/PostProject-monorepo',
     files: [
       { path: 'package.json', note: 'Корінь: private, workspaces packages/*, скрипти test і start для кожного пакета' },
@@ -111,7 +111,6 @@ const LABS = [
       { path: 'packages/desktop/ipcHandlers.js', note: 'Обробники IPC над спільним сервісом' },
       { path: 'packages/desktop/main.js', note: 'Головний процес Electron як модуль ES' },
       { path: 'packages/desktop/preload.cjs', note: 'contextBridge: window.calculationsAPI' },
-      { path: 'packages/mobile/src/storage/asyncStorageAdapter.ts', note: 'Мобільна версія: адаптер AsyncStorage' },
       { path: 'packages/server/resolvers.js', note: 'Сервер GraphQL з правилами зі спільного ядра' },
     ],
   },

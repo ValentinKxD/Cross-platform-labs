@@ -3,11 +3,6 @@ dist/
 out/
 .idea/
 .env
-.expo/
-web-build/
-expo-env.d.ts
 *.tsbuildinfo
 packages/desktop/renderer/
 packages/desktop/release/
-packages/mobile/android/
-packages/mobile/ios/

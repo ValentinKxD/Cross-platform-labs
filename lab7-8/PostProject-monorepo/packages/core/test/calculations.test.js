@@ -77,8 +77,8 @@ test('filterCalculationsByQuery шукає без урахування регі�
 
 test('sanitizeCalculations відкидає некоректні записи й приводить старі рядкові id до чисел', () => {
   const valid = item(1, '2026-11-01T10:00:00Z');
-  const fromMobile = { ...item(2, ''), id: '1794758992591' };
-  const result = sanitizeCalculations([valid, null, { id: 3 }, item(4, '', { deliveryType: 'air' }), fromMobile]);
+  const legacy = { ...item(2, ''), id: '1794758992591' };
+  const result = sanitizeCalculations([valid, null, { id: 3 }, item(4, '', { deliveryType: 'air' }), legacy]);
   assert.deepEqual(result.map((c) => c.id), [1, 1794758992591]);
   assert.deepEqual(sanitizeCalculations('not array'), []);
 });
