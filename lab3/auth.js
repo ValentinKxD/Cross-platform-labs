@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken';
 import { users } from './data.js';
 
-export const JWT_SECRET = 'postproject-lab3-secret';
+// Секрет береться зі змінної середовища (docker run -e JWT_SECRET=...),
+// значення за замовчуванням - лише для локального запуску без Docker
+export const JWT_SECRET = process.env.JWT_SECRET || 'postproject-lab3-secret';
 
 export function createToken(user) {
   return jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
